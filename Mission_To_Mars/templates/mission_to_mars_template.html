@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Latitude - Latitude Analysis Dashboard with Attitude</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira Sans:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="h-100 header p-5 rounded-3 text-center">
+                <h1 class="fw-bold">Mission To Mars</h1>
+                <button class="btn btn-primary" type="button">Scrape New Data</button>
+            </div> 
+            <h3 class="my-4">Latest Mars News</h3>
+            <h4>{{ marsdata.news_title }}</h4>
+            <p>{{ marsdata.news_p }}</p>
+            <div class="my-4 row">
+                <div class="col-8">
+                    <h4>Featured Mars Image</h4>
+                    <img src="{{ marsdata.featured_image_url }}"/>
+                </div>
+                <div class="col-4">
+                    <h4>Mars Facts</h4>
+                    {{ marsdata.html_table_string }}
+                </div>
+            </div>
+            <h4 class="text-center">Mars Hemispheres</h4>
+            <div class="my-4 row">
+                {% for hemisphere in marsdata.hemisphere_image_urls %}
+                    <div class="card col-md-3 col-xs-12">
+                        <img src="{{ hemisphere.img_url }}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ hemisphere.title }}</h5>
+                        </div>
+                    </div>                    
+                {% endfor %}
+            </div>
+        </div>
+        
+        
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>           
+    </body>
+</html
