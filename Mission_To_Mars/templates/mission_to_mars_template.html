@@ -15,7 +15,7 @@
         <div class="container">
             <div class="h-100 header p-5 rounded-3 text-center">
                 <h1 class="fw-bold">Mission To Mars</h1>
-                <button class="btn btn-primary" type="button">Scrape New Data</button>
+                <a class="btn btn-primary" href="http://127.0.0.1:5000/scrape" role="button">Scrape New Data</a>
             </div> 
             <h3 class="my-4">Latest Mars News</h3>
             <h4>{{ marsdata.news_title }}</h4>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-4">
                     <h4>Mars Facts</h4>
-                    {{ marsdata.html_table_string }}
+                    {{ marsdata.html_table_string|safe }}
                 </div>
             </div>
             <h4 class="text-center">Mars Hemispheres</h4>

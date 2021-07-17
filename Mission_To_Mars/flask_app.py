@@ -4,7 +4,7 @@ Created on Wed Jul 14 11:52:47 2021
 
 @author: jemif
 """
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, redirect
 import scrape_mars
 import pymongo
 
@@ -46,7 +46,7 @@ def get_mars_details():
     output = jsonify(result) 
     mongo_Db.marsinfo.insert_one(result)
     
-    return output 
+    return redirect("/", code=302) 
 
 
 if __name__ == "__main__":
